@@ -1,10 +1,17 @@
 const express = require("express")
 const morgan = require("morgan")
 const Router = require("./routes")
+const bodyParser = require("body-parser")
+const config = require("../config")
 const app = express()
+
+app.use(morgan('dev'))
+app.use(bodyParser.json())
+
+app.set("port", config.PORT || 5001);
 
 app.use("/api", Router)
 
-app.listen("5001", () => {
-    console.log("listening on port 5001")
+app.listen(app.get("port"), () => {
+    console.log("listening on port", app.get("port"))
 })
