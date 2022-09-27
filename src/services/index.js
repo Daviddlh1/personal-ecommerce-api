@@ -1,3 +1,5 @@
 module.exports = {
-    Services: {}
-}
+  Services: {
+    Test: require("./test.services")
+  },
+};

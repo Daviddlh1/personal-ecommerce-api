@@ -1,2 +1,9 @@
-/node_modules
+node_modules/
+dist/
 package-lock.json
+
+local.env
+
+keys.js
+development.env
+local.env
