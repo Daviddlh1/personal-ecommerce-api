@@ -12,7 +12,6 @@ const categorySchema = new Schema({
   disable: {
     type: Boolean,
     default: false,
-    required: true
   },
   creationDate: {
     type: Date,

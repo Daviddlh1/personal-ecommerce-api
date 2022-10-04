@@ -1,7 +1,4 @@
-const { application } = require("express");
 const { Schemas } = require("../schemas");
-const services = require("../services");
-const { Product } = Schemas
 const { Services } = require("../services");
 const productsServices = Services.Products
 const productsControllers = {};
