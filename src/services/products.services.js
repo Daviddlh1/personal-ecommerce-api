@@ -12,10 +12,32 @@ productsServices.getProductsFromDatabase = async () => {
     }
 };
 
+productsServices.getProductById = async (productId) => {
+    try{
+        const product = await Product.findById(productId)
+        return product
+    }catch(error){
+        return error
+    }
+}
+
 productsServices.createProduct = async (productInfo) => {
-  const product = new Product(productInfo);
-  const savedproduct = await product.save();
-  return savedproduct
+    try{
+        const product = new Product(productInfo);
+        const savedproduct = await product.save();
+        return savedproduct
+    }catch(error){
+        return error
+    }
 };
+
+productsServices.modifyProductById = async (productId, productInfo) => {
+    try{
+        const response = await Product.findByIdAndUpdate(productId, productInfo, {new: true})
+        return response
+    }catch(error){
+        return error
+    }
+}
 
 module.exports = productsServices;

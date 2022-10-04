@@ -1,6 +1,6 @@
 const { Schema, model } = require("../database");
 
-const producSchema = new Schema({
+const productSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -32,6 +32,14 @@ const producSchema = new Schema({
   }
 });
 
+productSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
 
 
-module.exports = model("Product", producSchema);
+
+module.exports = model("Product", productSchema);

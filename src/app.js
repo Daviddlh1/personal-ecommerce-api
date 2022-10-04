@@ -1,5 +1,5 @@
 const express = require("express");
-const databaseConnection = require("./database");
+require("./database")
 const morgan = require("morgan");
 const Router = require("./routes");
 const bodyParser = require("body-parser");
