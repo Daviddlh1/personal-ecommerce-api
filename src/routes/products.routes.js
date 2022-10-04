@@ -7,6 +7,7 @@ router.post("/createProduct",productsControllers.createProduct)
 router.get("/getProductsFromDatabase", productsControllers.getProductsFromDatabase)
 router.get("/getProductById/:id", productsControllers.getProductById)
 router.put("/modifyProductById/:id", productsControllers.modifyProductById)
+router.delete("/deleteProductById/:id", productsControllers.deleteProductById)
 
 router.use((error, req, res, next) => {
     console.error(error)

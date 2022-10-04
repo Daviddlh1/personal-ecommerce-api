@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const { Schemas } = require("../schemas");
 const { Product } = Schemas;
 const productsServices = {};
@@ -34,6 +33,15 @@ productsServices.createProduct = async (productInfo) => {
 productsServices.modifyProductById = async (productId, productInfo) => {
     try{
         const response = await Product.findByIdAndUpdate(productId, productInfo, {new: true})
+        return response
+    }catch(error){
+        return error
+    }
+}
+
+productsServices.deleteProductById = async (productId) => {
+    try{
+        const response = await Product.findByIdAndDelete(productId)
         return response
     }catch(error){
         return error
