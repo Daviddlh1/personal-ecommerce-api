@@ -15,7 +15,11 @@ const productSchema = new Schema({
     type: Number,
     required: true,
   },
-  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: "Category" }],
+  category: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    required: true,
+  }],
   stock: {
     type: Number,
     required: true,

@@ -1,4 +1,3 @@
-const { Schemas } = require("../schemas");
 const { Services } = require("../services");
 const productsServices = Services.Products
 const productsControllers = {};
@@ -41,6 +40,16 @@ productsControllers.createProduct = async (req, res) => {
     return res.status(201).json(response)
   } catch(error) {
     console.error(error)
+  }
+}
+
+productsControllers.createMultipleProducts = async (req, res) => {
+  try{
+    const response = await productsServices.createMultipleProducts(req.body)
+    console.log(req.body)
+    res.json(response)
+  } catch (error) {
+
   }
 }
 

@@ -1,5 +1,5 @@
 const { Schemas } = require("../schemas");
-const { Product } = Schemas;
+const { Product, Category } = Schemas;
 const productsServices = {};
 
 productsServices.getProductsFromDatabase = async () => {
@@ -22,6 +22,8 @@ productsServices.getProductById = async (productId) => {
 
 productsServices.createProduct = async (productInfo) => {
     try{
+        const category = await Category.find({title: productInfo.category})
+        productInfo.category = category
         const product = new Product(productInfo);
         const savedproduct = await product.save();
         return savedproduct
@@ -29,6 +31,17 @@ productsServices.createProduct = async (productInfo) => {
         return error
     }
 };
+
+productsServices.createMultipleProducts = async (productInfo) => {
+    try {
+        console.log(productInfo)
+
+        const category = await Category.find({title: productInfo.category})
+        return category
+    } catch (error) {
+
+    }
+}
 
 productsServices.modifyProductById = async (productId, productInfo) => {
     try{
