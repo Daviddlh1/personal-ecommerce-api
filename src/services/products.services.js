@@ -1,14 +1,16 @@
-const { Schemas } = require("../schemas");
-const { Product, Category } = Schemas;
+//const { Schemas } = require("../schemas");
+//const { Product, Category } = Schemas;
+const pool = require("../database");
 const productsServices = {};
 
 productsServices.getProductsFromDatabase = async () => {
+   let products
     try {
-        const products = await Product.find({});
-        return products;
+        products = await pool.query("SELECT * FROM Products");
     }catch(error){
         return error
     }
+    return products;
 };
 
 productsServices.getProductById = async (productId) => {
@@ -34,8 +36,7 @@ productsServices.createProduct = async (productInfo) => {
 
 productsServices.createMultipleProducts = async (productInfo) => {
     try {
-        console.log(productInfo)
-
+        pool.query("INSERT INTO Projects SET ?", projects)
         const category = await Category.find({title: productInfo.category})
         return category
     } catch (error) {

@@ -11,4 +11,13 @@ categoriesControllers.createCategory = async (req, res) => {
     }
 }
 
+categoriesControllers.getCategories = async (req, res) => {
+    try {
+        const response = await categoriesServices.getCategories()
+        return res.status(200).json(response)
+    }catch(error){
+        console.error(error)
+    }
+}
+
 module.exports = categoriesControllers

@@ -1,15 +1,14 @@
-const { Schemas } = require("../schemas")
-const { Category } = Schemas
+const pool = require("../database");
 const categoriesServices = {}
 
 categoriesServices.createCategory = async (categoryInfo) => {
-    try {
-        const category = new Category(categoryInfo)
-        const savedCategory = await category.save()
-        return savedCategory
-    } catch(error) {
-        return error
-    }
+    const data = await pool.query("INSERT INTO Categories SET ?", [categoryInfo])
+    return data
+}
+
+categoriesServices.getCategories = async () => {
+    const data = await pool.query("SELECT * FROM Categories")
+    return data
 }
 
 module.exports = categoriesServices
